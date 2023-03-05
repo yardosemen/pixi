@@ -1,4 +1,6 @@
-var characterCat = null;
+import { WIDTH, HEIGHT } from "../constants";
+
+let characterCat = null;
 
 PIXI.Assets.load([
 	"./assets/spritesheet.json",
@@ -24,8 +26,10 @@ PIXI.Assets.load([
 
 	// configure + start animation:
 	characterCat.animationSpeed = 1 / 10; // 6 fps
-	characterCat.x = app.screen.width / 2;
-	characterCat.y = app.screen.height / 1.4;
+	characterCat.x = WIDTH / 2;
+	characterCat.y = HEIGHT / 1.4;
 	characterCat.anchor.set(0.5);
 	characterCat.play();
 });
+
+export default characterCat;

@@ -1,4 +1,6 @@
-var pulseAnimationCandy = new PIXI.AnimatedSprite([
+import spriteCandy from "./candy";
+
+const pulseAnimationCandy = new PIXI.AnimatedSprite([
 	PIXI.Texture.from("./img/candy_pulse.png"),
 ]);
 
@@ -10,3 +12,5 @@ pulseAnimationCandy.y = spriteCandy.y;
 
 // Start the animation
 pulseAnimationCandy.play();
+
+export default pulseAnimationCandy;

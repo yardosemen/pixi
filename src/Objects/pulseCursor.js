@@ -1,4 +1,6 @@
-var pulseAnimation = new PIXI.AnimatedSprite([
+import spriteCursor from "./cursor";
+
+const pulseAnimation = new PIXI.AnimatedSprite([
 	PIXI.Texture.from("./img/cursor_pulse.png"),
 ]);
 
@@ -10,3 +12,5 @@ pulseAnimation.y = spriteCursor.y;
 
 // Start the animation
 pulseAnimation.play();
+
+export default pulseAnimation;
