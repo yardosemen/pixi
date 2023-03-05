@@ -1,0 +1,55 @@
+{
+	"frames": {
+		"catRelax.1.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 118,
+				"h": 118
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 118,
+				"h": 118
+			},
+			"sourceSize": {
+				"w": 118,
+				"h": 118
+			}
+		},
+		"catRelax2.png": {
+			"frame": {
+				"x": 121,
+				"y": 1,
+				"w": 118,
+				"h": 118
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 118,
+				"h": 118
+			},
+			"sourceSize": {
+				"w": 118,
+				"h": 118
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 240,
+			"h": 120
+		},
+		"scale": "1"
+	}
+}
