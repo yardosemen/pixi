@@ -1,4 +1,34 @@
+import app from "./initApp";
+import spriteArrowLeft from "./Objects/arrowLeft";
+import spriteArrowRight from "./Objects/arrowRight";
+import spriteBackgroundNavBar from "./Objects/backgroundNavBar";
+import { spriteCandies, CandyAnim } from "./Objects/candies";
+import spriteCandy from "./Objects/candy";
+import spriteCat from "./Objects/cat";
+import characterCat from "./Objects/characterCat";
+import spriteCursor from "./Objects/cursor";
+import { spriteGap, onSpriteGapAnimation } from "./Objects/gap";
+import {
+	spriteInsideStatusBar,
+	onPointerOver,
+} from "./Objects/insideStatusBar";
+import spriteLevel1 from "./Objects/level1";
+import spriteNavBar from "./Objects/navBar";
+import {
+	spriteRightSideGreen,
+	spriteLeftSideGreen,
+	onSplitStar,
+} from "./Objects/partGreenStar";
+import spritePlaceForLevel from "./Objects/PlaceForLevel";
+import pulseAnimationCandy from "./Objects/pulseCandy";
+import pulseCharacterCat from "./Objects/pulseCharacterCat";
+import pulseAnimation from "./Objects/pulseCursor";
+import spriteRope from "./Objects/rope";
+import sprite from "./Objects/sprite";
+import spriteStatusBar from "./Objects/statusBar";
+
 // Add the sprite to the PIXI stage
+debugger;
 app.stage.addChild(
 	spriteRope,
 	sprite,
@@ -19,7 +49,7 @@ sprite.interactive = true;
 sprite.on("pointerover", onPointerOver.bind(null, app.stage));
 
 sprite.on("click", handleClick);
-
+pulseCharacterCat(app.stage);
 function handleClick() {
 	// Create a new sprite when the original sprite is clicked
 	onSpriteGapAnimation(app.stage);

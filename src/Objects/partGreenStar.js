@@ -43,3 +43,5 @@ function onSplitStar(stage, onAnimationEnd) {
 
 	animateGreenStar();
 }
+
+export default { spriteRightSideGreen, spriteLeftSideGreen, onSplitStar };
