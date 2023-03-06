@@ -52,9 +52,9 @@ function animateCandyDown() {
 	requestAnimationFrame(animateCandyDown);
 }
 
-const spriteCandies = [spriteCandy1, spriteCandy2, spriteCandy3];
+export const spriteCandies = [spriteCandy1, spriteCandy2, spriteCandy3];
 
-function CandyAnim(stage, { onAnimationEnd, onAnimationNext }) {
+export const CandyAnim = (stage, { onAnimationEnd, onAnimationNext }) => {
 	stage.addChild(...spriteCandies);
 	animateCandyDown();
 	setTimeout(() => {
@@ -64,6 +64,6 @@ function CandyAnim(stage, { onAnimationEnd, onAnimationNext }) {
 			onAnimationEnd();
 		}, 2000);
 	}, 4000);
-}
+};
 
 export default { spriteCandies, CandyAnim };
