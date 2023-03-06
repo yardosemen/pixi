@@ -4,8 +4,15 @@ import spriteArrowRight from "./Objects/arrowRight";
 import spriteBackgroundNavBar from "./Objects/backgroundNavBar";
 import { spriteCandies, CandyAnim } from "./Objects/candies";
 import spriteCandy from "./Objects/candy";
+import {
+	removepulseCharacterCat,
+	pulseCharacterCat,
+} from "./Objects/pulseCharacterCat";
 import spriteCat from "./Objects/cat";
-import characterCat from "./Objects/characterCat";
+import {
+	removeCharacterCatEat,
+	startCharacterCatEat,
+} from "./Objects/characterCat";
 import spriteCursor from "./Objects/cursor";
 import { spriteGap, onSpriteGapAnimation } from "./Objects/gap";
 import {
@@ -21,14 +28,14 @@ import {
 } from "./Objects/partGreenStar";
 import spritePlaceForLevel from "./Objects/PlaceForLevel";
 import pulseAnimationCandy from "./Objects/pulseCandy";
-import pulseCharacterCat from "./Objects/pulseCharacterCat";
 import pulseAnimation from "./Objects/pulseCursor";
 import spriteRope from "./Objects/rope";
 import sprite from "./Objects/sprite";
 import spriteStatusBar from "./Objects/statusBar";
+import spriteCandyCount from "./Objects/candyCount";
+import spriteCandyNumber from "./Objects/candyNumber";
 
 // Add the sprite to the PIXI stage
-debugger;
 app.stage.addChild(
 	spriteRope,
 	sprite,
@@ -42,40 +49,51 @@ app.stage.addChild(
 	spriteArrowLeft,
 	spritePlaceForLevel,
 	spriteLevel1,
+	spriteCandyCount,
+	spriteCandyNumber,
 );
 
 sprite.interactive = true;
 
-sprite.on("pointerover", onPointerOver.bind(null, app.stage));
-
-sprite.on("click", handleClick);
 pulseCharacterCat(app.stage);
-function handleClick() {
-	// Create a new sprite when the original sprite is clicked
-	onSpriteGapAnimation(app.stage);
-}
 let clicks = 0;
-sprite.on("click", () => {
+function handleClick() {
+	onSpriteGapAnimation(app.stage);
 	clicks++;
 	spriteInsideStatusBar.scale.x -= 0.2;
 
 	if (clicks === 5) {
 		// remove sprite
 		app.stage.removeChild(sprite);
+		app.stage.removeChild(spriteRope);
+
 		onSplitStar(app.stage, (spriteLeftSideGreen, spriteRightSideGreen) => {
 			app.stage.removeChild(spriteLeftSideGreen, spriteRightSideGreen);
 		});
 
 		CandyAnim(app.stage, {
 			onAnimationNext: () => {
-				app.stage.addChild(characterCat);
+				removepulseCharacterCat(app.stage);
+				startCharacterCatEat(app.stage);
 			},
 			onAnimationEnd: () => {
-				app.stage.removeChild(characterCat);
+				removeCharacterCatEat(app.stage);
 			},
 		});
+		sprite.x = app.renderer.width / 2; // установка позиции по оси X в середину канваса
+		sprite.y = -sprite.height;
+		function animate() {
+			if (sprite.y < app.renderer.height / 4) {
+				sprite.y += 2; // перемещение спрайта вниз
+			}
+			requestAnimationFrame(animate);
+		}
+		app.stage.addChild(sprite); // добавление спрайта на сцену
+		animate();
 	}
-});
+}
+sprite.on("pointerover", handleClick);
+sprite.on("click", handleClick);
 
 // Create the pulse animation
 const pulse = gsap
