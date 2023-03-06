@@ -30,7 +30,6 @@ import spriteCandyCount from "./Objects/candyCount";
 import spriteCandyNumber from "./Objects/candyNumber";
 
 // Add the sprite to the PIXI stage
-debugger;
 app.stage.addChild(
 	spriteRope,
 	sprite,
@@ -48,40 +47,41 @@ app.stage.addChild(
 	spriteCandyNumber,
 );
 
-sprite.x = 0;
-sprite.y = 0;
+// sprite.x = 0;
+// sprite.y = 0;
 
-// create the animation
-const destination = { x: 400, y: 300 }; // the destination point
-const duration = 5000; // the duration of the animation in milliseconds
+// // create the animation
+// const destination = { x: 200, y: 350 }; // the destination point
+// const duration = 1000; // the duration of the animation in milliseconds
 
-// create a tween to animate the sprite
-const tween = PIXI.tweenManager.createTween(sprite);
+// // create a tween to animate the sprite
+// const tween = PIXI.tweenManager.createTween(sprite);
 
-// set the destination position of the sprite
-tween.to(destination, duration);
+// // set the destination position of the sprite
+// tween.to(destination, duration);
 
-// start the animation
-tween.start();
+// // start the animation
+// tween.start();
 
 sprite.interactive = true;
 
-sprite.on("pointerover", onPointerOver.bind(null, app.stage));
+// if (cheker === true) {
+// } else if (cheker === false) {
+// 	sprite.on("click", handleClick);
+// }
 
-sprite.on("click", handleClick);
+// sprite.on("click", handleClick);
 pulseCharacterCat(app.stage);
-function handleClick() {
-	// Create a new sprite when the original sprite is clicked
-	onSpriteGapAnimation(app.stage);
-}
 let clicks = 0;
-sprite.on("click", () => {
+function handleClick() {
+	onSpriteGapAnimation(app.stage);
 	clicks++;
 	spriteInsideStatusBar.scale.x -= 0.2;
 
 	if (clicks === 5) {
 		// remove sprite
 		app.stage.removeChild(sprite);
+		app.stage.removeChild(spriteRope);
 		onSplitStar(app.stage, (spriteLeftSideGreen, spriteRightSideGreen) => {
 			app.stage.removeChild(spriteLeftSideGreen, spriteRightSideGreen);
 		});
@@ -95,7 +95,9 @@ sprite.on("click", () => {
 			},
 		});
 	}
-});
+}
+sprite.on("pointerover", handleClick);
+sprite.on("click", handleClick);
 
 // Create the pulse animation
 const pulse = gsap

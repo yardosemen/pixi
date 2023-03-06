@@ -9,7 +9,7 @@ spriteRightSideGreen.y = 150;
 spriteLeftSideGreen.rotation += 0.3;
 spriteRightSideGreen.rotation -= 0.5;
 
-function onSplitStar(stage, onAnimationEnd) {
+export const onSplitStar = (stage, onAnimationEnd) => {
 	let x = spriteLeftSideGreen.x;
 	let y = spriteLeftSideGreen.y;
 	let x1 = spriteRightSideGreen.x;
@@ -42,6 +42,6 @@ function onSplitStar(stage, onAnimationEnd) {
 	stage.addChild(spriteLeftSideGreen, spriteRightSideGreen);
 
 	animateGreenStar();
-}
+};
 
 export default { spriteRightSideGreen, spriteLeftSideGreen, onSplitStar };
