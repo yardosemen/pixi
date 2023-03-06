@@ -1,6 +1,7 @@
 import { WIDTH, HEIGHT } from "../constants";
 
-function pulseCharacterCat(stage) {
+let character = null;
+export const pulseCharacterCat = (stage) => {
 	PIXI.Assets.load(["./spritesheetCat.json", "./spritesheet.png"]).then(() => {
 		const animations = PIXI.Assets.cache.get("./spritesheetCat.json").data
 			.animations;
@@ -15,6 +16,8 @@ function pulseCharacterCat(stage) {
 		character.play();
 		stage.addChild(character);
 	});
-}
+};
 
-export default pulseCharacterCat;
+export const removepulseCharacterCat = (stage) => {
+	stage.removeChild(character);
+};

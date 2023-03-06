@@ -4,8 +4,15 @@ import spriteArrowRight from "./Objects/arrowRight";
 import spriteBackgroundNavBar from "./Objects/backgroundNavBar";
 import { spriteCandies, CandyAnim } from "./Objects/candies";
 import spriteCandy from "./Objects/candy";
+import {
+	removepulseCharacterCat,
+	pulseCharacterCat,
+} from "./Objects/pulseCharacterCat";
 import spriteCat from "./Objects/cat";
-import characterCat from "./Objects/characterCat";
+import {
+	removeCharacterCatEat,
+	startCharacterCatEat,
+} from "./Objects/characterCat";
 import spriteCursor from "./Objects/cursor";
 import { spriteGap, onSpriteGapAnimation } from "./Objects/gap";
 import {
@@ -21,7 +28,6 @@ import {
 } from "./Objects/partGreenStar";
 import spritePlaceForLevel from "./Objects/PlaceForLevel";
 import pulseAnimationCandy from "./Objects/pulseCandy";
-import pulseCharacterCat from "./Objects/pulseCharacterCat";
 import pulseAnimation from "./Objects/pulseCursor";
 import spriteRope from "./Objects/rope";
 import sprite from "./Objects/sprite";
@@ -65,12 +71,6 @@ app.stage.addChild(
 
 sprite.interactive = true;
 
-// if (cheker === true) {
-// } else if (cheker === false) {
-// 	sprite.on("click", handleClick);
-// }
-
-// sprite.on("click", handleClick);
 pulseCharacterCat(app.stage);
 let clicks = 0;
 function handleClick() {
@@ -82,18 +82,30 @@ function handleClick() {
 		// remove sprite
 		app.stage.removeChild(sprite);
 		app.stage.removeChild(spriteRope);
+
 		onSplitStar(app.stage, (spriteLeftSideGreen, spriteRightSideGreen) => {
 			app.stage.removeChild(spriteLeftSideGreen, spriteRightSideGreen);
 		});
 
 		CandyAnim(app.stage, {
 			onAnimationNext: () => {
-				app.stage.addChild(characterCat);
+				removepulseCharacterCat(app.stage);
+				startCharacterCatEat(app.stage);
 			},
 			onAnimationEnd: () => {
-				app.stage.removeChild(characterCat);
+				removeCharacterCatEat(app.stage);
 			},
 		});
+		sprite.x = app.renderer.width / 2; // установка позиции по оси X в середину канваса
+		sprite.y = -sprite.height;
+		function animate() {
+			if (sprite.y < app.renderer.height / 4) {
+				sprite.y += 2; // перемещение спрайта вниз
+			}
+			requestAnimationFrame(animate);
+		}
+		app.stage.addChild(sprite); // добавление спрайта на сцену
+		animate();
 	}
 }
 sprite.on("pointerover", handleClick);

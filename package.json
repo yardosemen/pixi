@@ -24,6 +24,7 @@
 		"webpack-cli": "^5.0.1"
 	},
 	"dependencies": {
-		"pixi-tween": "^0.2.0"
+		"pixi-tween": "^0.2.0",
+		"pixi.js": "^7.1.4"
 	}
 }
