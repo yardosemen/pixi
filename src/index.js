@@ -26,6 +26,8 @@ import pulseAnimation from "./Objects/pulseCursor";
 import spriteRope from "./Objects/rope";
 import sprite from "./Objects/sprite";
 import spriteStatusBar from "./Objects/statusBar";
+import spriteCandyCount from "./Objects/candyCount";
+import spriteCandyNumber from "./Objects/candyNumber";
 
 // Add the sprite to the PIXI stage
 debugger;
@@ -42,6 +44,8 @@ app.stage.addChild(
 	spriteArrowLeft,
 	spritePlaceForLevel,
 	spriteLevel1,
+	spriteCandyCount,
+	spriteCandyNumber,
 );
 
 sprite.interactive = true;
