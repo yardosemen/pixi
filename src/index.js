@@ -53,22 +53,6 @@ app.stage.addChild(
 	spriteCandyNumber,
 );
 
-// sprite.x = 0;
-// sprite.y = 0;
-
-// // create the animation
-// const destination = { x: 200, y: 350 }; // the destination point
-// const duration = 1000; // the duration of the animation in milliseconds
-
-// // create a tween to animate the sprite
-// const tween = PIXI.tweenManager.createTween(sprite);
-
-// // set the destination position of the sprite
-// tween.to(destination, duration);
-
-// // start the animation
-// tween.start();
-
 sprite.interactive = true;
 
 pulseCharacterCat(app.stage);
