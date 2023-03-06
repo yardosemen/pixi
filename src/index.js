@@ -48,6 +48,22 @@ app.stage.addChild(
 	spriteCandyNumber,
 );
 
+sprite.x = 0;
+sprite.y = 0;
+
+// create the animation
+const destination = { x: 400, y: 300 }; // the destination point
+const duration = 5000; // the duration of the animation in milliseconds
+
+// create a tween to animate the sprite
+const tween = PIXI.tweenManager.createTween(sprite);
+
+// set the destination position of the sprite
+tween.to(destination, duration);
+
+// start the animation
+tween.start();
+
 sprite.interactive = true;
 
 sprite.on("pointerover", onPointerOver.bind(null, app.stage));
