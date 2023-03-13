@@ -23,7 +23,7 @@ let y1 = spriteCandy2.y;
 let x2 = spriteCandy3.x;
 let y2 = spriteCandy3.y;
 
-function animateCandyDown() {
+export const animateCandyDown = () => {
 	x = 200;
 	y += 1;
 	x1 = 200;
@@ -50,7 +50,7 @@ function animateCandyDown() {
 		return;
 	}
 	requestAnimationFrame(animateCandyDown);
-}
+};
 
 export const spriteCandies = [spriteCandy1, spriteCandy2, spriteCandy3];
 
@@ -65,5 +65,3 @@ export const CandyAnim = (stage, { onAnimationEnd, onAnimationNext }) => {
 		}, 2000);
 	}, 4000);
 };
-
-export default { spriteCandies, CandyAnim };

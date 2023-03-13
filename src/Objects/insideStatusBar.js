@@ -1,6 +1,7 @@
-import spriteRope from "./rope";
+import app from "../initApp";
+import { spriteRope } from "./rope";
 import gap from "./gap";
-import { CandyAnim } from "./candies";
+import spriteCandies, { CandyAnim, animateCandyDown } from "./candies";
 import { onSplitStar } from "./partGreenStar";
 export const spriteInsideStatusBar = PIXI.Sprite.from(
 	"./img/insideStatusBar.png",
@@ -11,15 +12,15 @@ spriteInsideStatusBar.x = 142;
 spriteInsideStatusBar.y = 343;
 
 export const onPointerOver = (stage) => {
-	stage.addChild(gap.spriteGap);
+	app.stage.addChild(gap.spriteGap);
 	setTimeout(() => {
-		stage.removeChild(gap.spriteGap);
+		app.stage.removeChild(gap.spriteGap);
 	}, 100);
 	spriteInsideStatusBar.scale.x -= 0.2;
 	if (spriteInsideStatusBar.scale.x < 0) {
-		stage.removeChild(spriteInsideStatusBar);
+		app.stage.removeChild(spriteInsideStatusBar);
 		onSplitStar(stage);
 		CandyAnim(stage, onAnimationEnd);
-		stage.removeChild(spriteRope);
+		app.stage.removeChild(spriteRope);
 	}
 };
